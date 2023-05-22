@@ -1,10 +1,10 @@
 import React from 'react'
 
-const AboutUser = () => {
+const AboutUserPage = () => {
 	return (
 		<div>AboutUser</div>
 	)
 }
 
-export default AboutUser;
+export default AboutUserPage;
 
