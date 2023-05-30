@@ -4,6 +4,7 @@ import { rootSaga } from "../sagas";
 import postsReducer from "./posts";
 import commentsReducer from "./comments";
 import userReducer from "./user";
+import searchReducer from "./search";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -12,6 +13,7 @@ const store = configureStore({
     posts: postsReducer,
     comments: commentsReducer,
     user: userReducer,
+    search: searchReducer,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware);

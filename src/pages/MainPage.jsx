@@ -1,8 +1,8 @@
 import React from "react";
-import Posts from "../components/Posts";
+import PostsLayout from "../components/PostsLayout";
 
 const MainPage = () => {
-  return <Posts />;
+  return <PostsLayout />;
 };
 
 export default MainPage;

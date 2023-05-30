@@ -54,3 +54,17 @@ body {
 .nav-link:hover {
 	color: lightslategray;
 }
+
+.search {
+	position: relative;
+}
+
+.search-img {
+	display: block;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 25%;
+	right: 15px;
+	cursor: pointer;
+}

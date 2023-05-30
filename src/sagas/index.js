@@ -1,4 +1,11 @@
-import { delay, all, call, put, takeEvery } from "redux-saga/effects";
+import {
+  delay,
+  all,
+  call,
+  put,
+  takeEvery,
+  takeLatest,
+} from "redux-saga/effects";
 import { getPosts, fetchedPosts } from "../redux/posts";
 import { getComments, fetchedComments } from "../redux/comments";
 import {
@@ -7,11 +14,13 @@ import {
   getUserPosts,
   fetchedUserPosts,
 } from "../redux/user";
+import { searchPosts, fetchedSearchPosts } from "../redux/search";
 import {
   getPostsApi,
   getCommentsApi,
   getUserApi,
   getUserPostsApi,
+  searchPostsApi,
 } from "../api";
 
 function* getPostsSaga() {
@@ -38,12 +47,19 @@ function* getUserPostsSaga(action) {
   yield put(fetchedUserPosts(yield call(getUserPostsApi, action.payload)));
 }
 
+function* searchPostsSaga(action) {
+	yield delay(500);
+	
+  yield put(fetchedSearchPosts(yield call(searchPostsApi, action.payload)));
+}
+
 function* watcherSaga() {
   yield all([
     yield takeEvery(getPosts.type, getPostsSaga),
     yield takeEvery(getComments.type, getCommentsSaga),
     yield takeEvery(getUser.type, getUserSaga),
     yield takeEvery(getUserPosts.type, getUserPostsSaga),
+    yield takeLatest(searchPosts.type, searchPostsSaga),
   ]);
 }
 
