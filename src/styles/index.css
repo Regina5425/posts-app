@@ -36,3 +36,21 @@ body {
 .about-me__link:hover {
 	text-decoration: underline;
 }
+
+.post-bootom {
+	margin-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #000;
+}
+
+.nav-link {
+	display: block;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 18px;
+	line-height: 1.2;
+}
+
+.nav-link:hover {
+	color: lightslategray;
+}

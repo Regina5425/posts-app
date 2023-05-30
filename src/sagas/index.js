@@ -1,35 +1,52 @@
 import { delay, all, call, put, takeEvery } from "redux-saga/effects";
 import { getPosts, fetchedPosts } from "../redux/posts";
 import { getComments, fetchedComments } from "../redux/comments";
-import { getPostsApi, getCommentsApi } from "../api";
+import {
+  getUser,
+  fetchedUser,
+  getUserPosts,
+  fetchedUserPosts,
+} from "../redux/user";
+import {
+  getPostsApi,
+  getCommentsApi,
+  getUserApi,
+  getUserPostsApi,
+} from "../api";
 
-//! работа с запросами, api (workerSaga)
 function* getPostsSaga() {
-	yield delay(500);
+  yield delay(500);
 
-  yield put(
-			fetchedPosts(yield call(getPostsApi))
-		);
+  yield put(fetchedPosts(yield call(getPostsApi)));
 }
 
 function* getCommentsSaga(action) {
-	yield delay(500);
-	
-	yield put(fetchedComments(yield call(getCommentsApi, action.payload)))
+  yield delay(500);
+
+  yield put(fetchedComments(yield call(getCommentsApi, action.payload)));
 }
 
-//!слежение за action (watcherSaga)
+function* getUserSaga(action) {
+  yield delay(500);
+
+  yield put(fetchedUser(yield call(getUserApi, action.payload)));
+}
+
+function* getUserPostsSaga(action) {
+  yield delay(700);
+
+  yield put(fetchedUserPosts(yield call(getUserPostsApi, action.payload)));
+}
+
 function* watcherSaga() {
   yield all([
-		yield takeEvery(getPosts.type, getPostsSaga),
-		yield takeEvery(getComments.type, getCommentsSaga)
-	]);
+    yield takeEvery(getPosts.type, getPostsSaga),
+    yield takeEvery(getComments.type, getCommentsSaga),
+    yield takeEvery(getUser.type, getUserSaga),
+    yield takeEvery(getUserPosts.type, getUserPostsSaga),
+  ]);
 }
 
-//! корневая saga
 export function* rootSaga() {
   yield watcherSaga();
 }
-
-//! take блокирует запрос пока не будет выполнен action и срабатывает только один раз
-//! takeEvery срабатывает каждый раз

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   posts: [],
-	isFetching: false,
+  isFetching: false,
 };
 
 export const postsSlice = createSlice({
@@ -12,13 +12,13 @@ export const postsSlice = createSlice({
     getPosts: (state) => {
       state.isFetching = true;
     },
-		fetchedPosts: (state, action) => {
-			state.isFetching = false;
-			state.posts = action.payload;
-		},
-		resetState: (state) => {
-			return initialState;
-		}
+    fetchedPosts: (state, action) => {
+      state.isFetching = false;
+      state.posts = action.payload;
+    },
+    resetState: (state) => {
+      return initialState;
+    },
   },
 });
 

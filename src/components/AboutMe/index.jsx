@@ -20,20 +20,38 @@ const AboutMe = () => {
         React, Redux и&nbsp;MobX. Можно ознакомиться с&nbsp;ними
         на&nbsp;странице в&nbsp;Github, посмотреть код и&nbsp;демо-версии:
         <br />
-        <Link className="about-me__link text-success" to='https://github.com/Regina5425/wordbook-app'>
+        <br />
+        <Link
+          className='about-me__link text-success'
+          to='https://github.com/Regina5425/wordbook-app'
+        >
           1. Приложение по&nbsp;запоминанию английских слов
         </Link>
         <br />
-        <Link className="about-me__link text-success" to='https://github.com/Regina5425/coffee-shop'>
+        <Link
+          className='about-me__link text-success'
+          to='https://github.com/Regina5425/coffee-shop'
+        >
           2. Интернет-магазин для покупки зернового кофе
         </Link>
         <br />
-        На&nbsp;данный момент я&nbsp;прохожу стажировку в&nbsp;небольшом
-        коммерческом проекте на&nbsp;волонтерской основе, где применяю
-        полученные знания на&nbsp;практике. Мне очень нравится разрабатывать
-        сайты и&nbsp;приложения, и&nbsp;это&nbsp;то, чем я&nbsp;хотела&nbsp;бы
-        заниматься больше всего. Сейчас дополнительно изучаю разработку
-        на&nbsp;NodeJS, так как хочу стать крутым fullstack-разработчиком.
+        <br />
+        На&nbsp;данный момент я&nbsp;стажируюсь на&nbsp;коммерческом проекте,
+        где применяю полученные знания на&nbsp;практике. У&nbsp;нас
+        в&nbsp;команде 3&nbsp;frontend-разработчика, включая меня, бэкендер,
+        тестировщики, дизайнеры и&nbsp;project manager. В&nbsp;работе
+        мы&nbsp;используем React, Redux Toolkit, RTKQuery, проект полностью
+        написан на&nbsp;TypeScript, для стилей мы&nbsp;используем
+        styled-components, также пишем unit-тесты на&nbsp;готовые компоненты.
+        В&nbsp;процессе стажировки мною с&nbsp;нуля была разработана страница
+        профиля пользователя, также я&nbsp;настроила роутинг (react-router) для
+        переключения между страницами, реализовала отправку данных
+        на&nbsp;сервер.
+        <br />
+        <br />
+        В&nbsp;дальнейшем я&nbsp;хочу развиваться как специалист, изучать новые
+        технологии. Сейчас дополнительно изучаю разработку на&nbsp;NodeJS, так
+        как хочу стать крутым fullstack-разработчиком.
       </p>
     </div>
   );

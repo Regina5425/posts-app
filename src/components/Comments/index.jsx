@@ -1,7 +1,7 @@
 import Comment from "../Comment";
 import Loader from "../Loader";
 
-const Comments = ({comments, isFetching}) => {
+const Comments = ({ comments, isFetching }) => {
   return (
     <>
       {comments.length === 0 && isFetching ? (

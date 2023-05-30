@@ -11,10 +11,10 @@ const App = () => {
       <Route path='/' element={<Layout />}>
         <Route index element={<MainPage />} />
         <Route path='/about-me' element={<AboutMePage />} />
-        <Route path='/about-user' element={<AboutUserPage />} />
+        <Route path='/about-user/:id' element={<AboutUserPage />} />
       </Route>
     </Routes>
   );
-}
+};
 
 export default App;
