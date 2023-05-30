@@ -1,16 +1,18 @@
 import axios from "axios";
 
+const BASE_URL = "https://jsonplaceholder.typicode.com";
+
 export const getPostsApi = async () => {
   const data = await axios
-    .get("https://jsonplaceholder.typicode.com/posts?_limit=10")
+    .get(`${BASE_URL}/posts?_limit=10`)
     .then((res) => res.data);
   return data;
 };
 
-export const getCommentApi = async (postId) => {
+export const getCommentsApi = async (postId) => {
   const data = await axios
-    .get(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
+    .get(`${BASE_URL}/posts/${postId}/comments`)
     .then((res) => res.data);
 
-		return data;
+  return data;
 };

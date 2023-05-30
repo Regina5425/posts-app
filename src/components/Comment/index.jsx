@@ -1,10 +1,10 @@
 import React from "react";
 
-const Comment = ({email, body}) => {
+const Comment = ({comments}) => {
   return (
     <div className='mt-2'>
-      <h6 className="text-secondary">{email}</h6>
-      <p>{body}</p>
+      <h6 className="text-secondary">{comments.email}</h6>
+      <p>{comments.body}</p>
     </div>
   );
 };
