@@ -1,12 +1,11 @@
 import Button from "react-bootstrap/Button";
 
 const Sort = ({ sort, onSortChange }) => {
-
   return (
     <>
       {sort ? (
         <Button
-          style={{ width: "20%", height: "10%" }}
+          className='sort-btn'
           variant='secondary'
           onClick={() => onSortChange(false)}
         >
@@ -14,7 +13,7 @@ const Sort = ({ sort, onSortChange }) => {
         </Button>
       ) : (
         <Button
-          style={{ width: "20%", height: "10%" }}
+          className='sort-btn'
           variant='dark'
           onClick={() => onSortChange(true)}
         >

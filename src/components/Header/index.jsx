@@ -37,7 +37,7 @@ const Header = () => {
                       alt='my-ava'
                       fluid
                       roundedCircle
-                      width={30}
+                      className='my-pic'
                     />
                     <div>
                       <p className='avatar__name'>Регина</p>

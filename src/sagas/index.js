@@ -15,11 +15,11 @@ import {
   getUserPostsApi,
 } from "../api";
 
-function* getPostsSaga() {
+function* getPostsSaga(action) {
   try {
     yield delay(500);
 
-    yield put(fetchedPosts(yield call(getPostsApi)));
+    yield put(fetchedPosts(yield call(getPostsApi, action.payload)));
   } catch {
     yield put({
       type: getPostsError.type,

@@ -3,14 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   posts: [],
   isFetching: false,
+  page: 1,
 };
 
 export const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {
-    getPosts: (state) => {
+    getPosts: (state, action) => {
       state.isFetching = true;
+      state.page = action.payload;
     },
     fetchedPosts: (state, action) => {
       state.isFetching = false;

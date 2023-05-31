@@ -5,21 +5,23 @@ import Loader from "./../Loader/index";
 import Search from "../Search";
 import Posts from "./../Posts/index";
 import Sort from "./../Sort/index";
+import PaginationBlock from "./../Pagination/index";
 
 const PostsLayout = () => {
   const dispatch = useDispatch();
-  const { posts, isFetching } = useSelector((state) => state.posts);
+  const { posts, isFetching, page } = useSelector((state) => state.posts);
   const { errorPosts } = useSelector((state) => state.error);
   const [value, setValue] = useState("");
   const [sorted, setSorted] = useState(false);
+  const [currentPage, setCurrentPage] = useState(page);
 
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getPosts(page));
 
     return () => {
       dispatch(resetState());
     };
-  }, [dispatch]);
+  }, [page, dispatch]);
 
   if (posts.length === 0 && isFetching && !errorPosts) {
     return <Loader />;
@@ -48,10 +50,15 @@ const PostsLayout = () => {
     setSorted(value);
   };
 
+  const onChangeCurrentPage = (page) => {
+    setCurrentPage(page);
+    dispatch(getPosts(page));
+  };
+
   return (
     <>
       <h1>Список постов</h1>
-      <div className='d-flex justify-content-between align-content-center mb-3'>
+      <div className='d-flex justify-content-between align-content-center mb-3 post-nav'>
         <Search inputValue={value} onUpdateSearch={onUpdateSearch} />
         <Sort sort={sorted} onSortChange={onSortChange} />
       </div>
@@ -73,6 +80,10 @@ const PostsLayout = () => {
           ))}
         </>
       )}
+      <PaginationBlock
+        currentPage={currentPage}
+        changeCurrentPage={onChangeCurrentPage}
+      />
     </>
   );
 };
