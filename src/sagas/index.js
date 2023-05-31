@@ -15,6 +15,7 @@ import {
   fetchedUserPosts,
 } from "../redux/user";
 import { searchPosts, fetchedSearchPosts } from "../redux/search";
+import { getPostsError, getCommentsError, getUserError } from "../redux/errors";
 import {
   getPostsApi,
   getCommentsApi,
@@ -24,21 +25,42 @@ import {
 } from "../api";
 
 function* getPostsSaga() {
-  yield delay(500);
+  try {
+    yield delay(500);
 
-  yield put(fetchedPosts(yield call(getPostsApi)));
+    yield put(fetchedPosts(yield call(getPostsApi)));
+  } catch {
+    yield put({
+      type: getPostsError.type,
+      payload: "Ошибка при загрузке постов",
+    });
+  }
 }
 
 function* getCommentsSaga(action) {
-  yield delay(500);
+  try {
+    yield delay(500);
 
-  yield put(fetchedComments(yield call(getCommentsApi, action.payload)));
+    yield put(fetchedComments(yield call(getCommentsApi, action.payload)));
+  } catch {
+    yield put({
+      type: getCommentsError.type,
+      payload: "Ошибка при загрузке комментариев",
+    });
+  }
 }
 
 function* getUserSaga(action) {
-  yield delay(500);
+  try {
+    yield delay(500);
 
-  yield put(fetchedUser(yield call(getUserApi, action.payload)));
+    yield put(fetchedUser(yield call(getUserApi, action.payload)));
+  } catch {
+    yield put({
+      type: getUserError.type,
+      payload: "Ошибка при загрузке пользователя",
+    });
+  }
 }
 
 function* getUserPostsSaga(action) {
@@ -48,8 +70,8 @@ function* getUserPostsSaga(action) {
 }
 
 function* searchPostsSaga(action) {
-	yield delay(500);
-	
+  yield delay(500);
+
   yield put(fetchedSearchPosts(yield call(searchPostsApi, action.payload)));
 }
 

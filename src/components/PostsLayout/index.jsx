@@ -8,6 +8,7 @@ import Posts from "./../Posts/index";
 const PostsLayout = () => {
   const dispatch = useDispatch();
   const { posts, isFetching } = useSelector((state) => state.posts);
+  const { errorPosts } = useSelector((state) => state.error);
   const { searchResults } = useSelector((state) => state.search);
   const value = searchResults[0]?.title;
 
@@ -19,6 +20,12 @@ const PostsLayout = () => {
     };
   }, [dispatch]);
 
+  if (posts.length === 0 && isFetching && !errorPosts) {
+    return <Loader />;
+  } else if (!posts || posts.length === 0) {
+    return errorPosts ? <h2>{errorPosts}</h2> : null;
+  }
+
   return (
     <>
       <h1>Список постов</h1>
@@ -28,23 +35,17 @@ const PostsLayout = () => {
           <>
             {searchResults.map((post) => (
               <div key={post.id}>
-                <Posts post={post} />
+                <Posts post={post} error={errorPosts} />
               </div>
             ))}
           </>
         ) : (
           <>
-            {posts.length === 0 && isFetching ? (
-              <Loader />
-            ) : (
-              <>
-                {posts.map((post) => (
-                  <div key={post.id}>
-                    <Posts post={post} />
-                  </div>
-                ))}
-              </>
-            )}
+            {posts.map((post) => (
+              <div key={post.id}>
+                <Posts post={post} error={errorPosts} />
+              </div>
+            ))}
           </>
         )}
       </>

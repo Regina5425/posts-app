@@ -7,6 +7,7 @@ import Post from "../Post";
 import User from "../../assets/user.png";
 
 const Posts = ({post}) => {
+
   return (
     <ListGroup className='mb-3'>
       <ListGroup.Item>
