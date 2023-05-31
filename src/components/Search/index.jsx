@@ -1,37 +1,30 @@
 import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
 import { Image } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Close from "../../assets/close.svg";
-import { searchPosts, resetState } from "../../redux/search";
 
-const Search = ({inputValue}) => {
+const Search = ({ inputValue, onUpdateSearch }) => {
   const [searchValue, setSearchValue] = useState("");
-
-  const dispatch = useDispatch();
 
   const inputRef = useRef();
 
   const resetValue = () => {
-    dispatch(resetState());
     setSearchValue("");
+    onUpdateSearch("");
     inputRef.current.focus();
   };
 
   const handleChange = (e) => {
-    if (!e.target.value) {
-      return;
-    }
+    const newValue = e.target.value;
 
-		setSearchValue(e.target.value)
-
-    dispatch(searchPosts(e.target.value));
+    setSearchValue(newValue);
+    onUpdateSearch(newValue);
   };
 
-	useEffect(() => {
-		setSearchValue(inputValue);
-		// eslint-disable-next-line
-	}, [])
+  useEffect(() => {
+    setSearchValue(inputValue);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
