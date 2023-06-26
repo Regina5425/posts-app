@@ -32,7 +32,6 @@
 * Redux-saga
 * JavaScript
 * React-bootstrap
-* React-router
 * Axios
 
 
