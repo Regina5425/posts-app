@@ -15,6 +15,7 @@
 ## О проекте
 
 Приложение с постами с загрузкой из api <a href="https://jsonplaceholder.typicode.com/">JSON Placeholder</a>
+<br />
 Выполнено для <a href="https://disk.yandex.ru/i/J2WpKCos9JLE9g">тестового задания по ТЗ</a>
 
 ### Функционал
